@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - EmpowerFit</title>
+    <link rel="icon" type="image/x-icon" href="img/gym_logo.jpg" />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        color: white;
+        margin: 0;
+        padding: 0;
+        background: url("3607424.jpg") no-repeat center center fixed;
+        background-size: cover;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 50px;
+        z-index: 1000;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .left img {
+        width: 100px;
+      }
+
+      .left div {
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: #f3f4f2;
+      }
+
+      .navbar {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 30px;
+      }
+
+      .navbar li a {
+        text-decoration: none;
+        font-size: 20px;
+        color: white;
+        padding: 10px;
+        transition: color 0.3s;
+      }
+
+      .navbar li a:hover {
+        color: #ffcc00;
+      }
+
+      .btn {
+        background-color: #215f78;
+        color: black;
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        transition: background-color 0.3s;
+      }
+
+      .btn:hover {
+        background-color: #ffcc00;
+      }
+
+      .hero {
+        text-align: center;
+        padding: 150px 50px;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      .contact-info,
+      .contact-form {
+        padding: 50px;
+        text-align: center;
+      }
+
+      .contact-info h2,
+      .contact-form h2 {
+        color: #ffcc00;
+        margin-bottom: 20px;
+      }
+
+      .contact-details p {
+        font-size: 18px;
+        color: white;
+        margin: 5px 0;
+      }
+
+      .form-group {
+        margin: 20px 0;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        margin-top: 8px;
+        font-size: 16px;
+      }
+
+      .contact-form .btn {
+        background-color: #ffcc00;
+        color: black;
+        margin-top: 20px;
+        font-size: 18px;
+      }
+
+      footer {
+        background-color: black;
+        padding: 20px;
+        color: white;
+        text-align: center;
+        position: relative;
+      }
+
+      footer a {
+        color: grey;
+        margin: 0 10px;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      footer a:hover {
+        color: #ffcc00;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="left">
+        <img src="logo3.avif" alt="Gym Logo" />
+        <div>EmpowerFit</div>
+      </div>
+      <ul class="navbar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="memberships.html">Memberships</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+      <a href="join.html"><button class="btn">Join Us</button></a>
+    </header>
+
+    <section class="hero">
+      <h1>Contact Us</h1>
+      <p>We're here to help you with any questions or concerns.</p>
+    </section>
+
+    <section class="contact-info">
+      <h2>Our Contact Information</h2>
+      <div class="contact-details">
+        <p><strong>Email:</strong> support@empowerfit.com</p>
+        <p><strong>Phone:</strong> +123-456-7890</p>
+        <p><strong>Address:</strong> 123 Fitness Street, Healthy City</p>
+      </div>
+    </section>
+
+    <section class="contact-form">
+      <h2>Send Us a Message</h2>
+      <form action="submit_form.php" method="post">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn">Submit</button>
+      </form>
+    </section>
+
+    <footer>
+      <p>&copy; 2024 EmpowerFit | Follow us on
+        <a href="#">Instagram</a> |
+        <a href="#">Facebook</a> |
+        <a href="#">Twitter</a>
+      </p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <a href="index.html"></a>
+  <link rel="icon" type="image/x-icon" href="5087579.png">
+  <style>
+    body {
+      background-image: url("3607424.jpg");
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .form {
+      background-color: rgba(255, 255, 255, 0);
+      padding: 1.5rem;
+      max-width: 350px;
+      border-radius: 0.5rem;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+      animation: fadeIn 1s ease-in-out forwards;
+      position: relative;
+      text-align: center;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .form.fade-out {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+
+    .form-title {
+      font-size: 1.5rem;
+      line-height: 1.75rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-container {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+
+    .input-container input {
+      background-color: rgba(255, 255, 255, 0.2);
+      padding: 1rem;
+      font-size: 1rem;
+      width: 90%;
+      border-radius: 0.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      color: #fff;
+      box-shadow: none;
+    }
+
+    .input-container input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .submit {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: transparent;
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 500;
+      width: 100%;
+      border-radius: 0.5rem;
+      border: 2px solid #4F46E5;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .submit:hover {
+      background-color: #4F46E5;
+      color: #ffffff;
+    }
+
+    .forgot-password {
+      color: #ffffff;
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+      display: inline-block;
+    }
+
+    .forgot-password a {
+      text-decoration: underline;
+      color: #ffffff;
+    }
+
+    .forgot-password a:hover {
+      color: #ffcc00;
+    }
+
+    .signup-link {
+      color: #ffffff;
+      font-size: 0.875rem;
+      margin-top: 1rem;
+    }
+
+    .signup-link a {
+      text-decoration: underline;
+      color: #ffffff;
+    }
+
+    .signup-link a:hover {
+      color: #ffcc00;
+    }
+
+    .fade-out {
+      animation: fadeOut 1s forwards;
+    }
+
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <form class="form" id="loginForm">
+    <p class="form-title">Sign in to your account</p>
+     <div class="input-container">
+       <input type="email" placeholder="Enter email">
+   </div>
+   <div class="input-container">
+       <input type="password" placeholder="Enter password">
+   </div>
+
+   <p class="forget password">
+     <a href="forget password.html" id="forgotPasswordLink">Forgot Password?</a>
+   </p>
+
+   <button type="submit" class="submit">
+     Sign in
+   </button>
+
+   <p class="signup-link">
+     No account?
+     <a href="signup.html" id="signupLink">Sign up</a>
+   </p>
+</form>
+
+<script>
+  document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form from submitting normally
+
+    const email = document.querySelector('input[type="email"]').value;
+    const password = document.querySelector('input[type="password"]').value;
+
+    // You can add additional validations here, if needed
+
+    const form = document.querySelector('.form');
+    form.classList.add('fade-out');
+
+    setTimeout(() => {
+      window.location.href = 'index.html'; // Redirect to the main page
+    }, 500);
+  });
+</script>
+
+
+
+</body>
+</html>

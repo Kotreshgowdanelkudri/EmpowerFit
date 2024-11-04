@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EmpowerFit - Memberships</title>
+    <link rel="icon" type="image/x-icon" href="img/gym_logo.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        color: white;
+        margin: 0;
+        padding: 0;
+        background: url("3607424.jpg") no-repeat center center fixed;
+        background-size: cover;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 50px;
+        z-index: 1000;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .left img {
+        width: 100px;
+      }
+
+      .left div {
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: #f3f4f2;
+      }
+
+      .navbar {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 30px;
+      }
+
+      .navbar li a {
+        text-decoration: none;
+        font-size: 20px;
+        color: white;
+        padding: 10px;
+        transition: color 0.3s;
+      }
+
+      .navbar li a:hover {
+        color: #ffcc00;
+      }
+
+      .btn {
+        background-color: #215f78;
+        color: black;
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        transition: background-color 0.3s;
+      }
+
+      .btn:hover {
+        background-color: #ffcc00;
+      }
+
+      .hero {
+        text-align: center;
+        padding: 200px 50px;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      .plans {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        padding: 50px;
+      }
+
+      .plan {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        margin: 20px;
+        padding: 20px;
+        width: 280px;
+        text-align: center;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+      }
+
+      .plan:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+      }
+
+      .plan h3 {
+        color: #ffcc00;
+        font-size: 22px;
+        margin: 15px 0;
+      }
+
+      .plan p {
+        color: #ddd;
+        font-size: 16px;
+        margin: 10px 0;
+      }
+
+      .plan .price {
+        font-size: 24px;
+        color: #ffcc00;
+        margin: 10px 0;
+      }
+
+      footer {
+        background-color: black;
+        padding: 20px;
+        color: white;
+        text-align: center;
+        position: relative;
+      }
+
+      footer a {
+        color: grey;
+        margin: 0 10px;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      footer a:hover {
+        color: #ffcc00;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="left">
+        <img src="logo3.avif" alt="Gym Logo" />
+        <div>EmpowerFit</div>
+      </div>
+      <ul class="navbar">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="memberships.html">Memberships</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+      <a href="join.html"><button class="btn">Join Us</button></a>
+    </header>
+
+    <section class="hero">
+      <h1>Our Membership Plans</h1>
+      <p>Choose the plan that suits you best!</p>
+    </section>
+
+    <!-- Membership Plans Section -->
+    <section class="plans">
+      <div class="plan">
+        <h3>Basic Membership</h3>
+        <p>Access to gym facilities during working hours.</p>
+        <p class="price">$30/month</p>
+        <button class="btn membership-btn">Join Now</button>
+      </div>
+
+      <div class="plan">
+        <h3>Premium Membership</h3>
+        <p>Unlimited access to gym facilities and classes.</p>
+        <p class="price">$50/month</p>
+        <button class="btn membership-btn">Join Now</button>
+      </div>
+
+      <div class="plan">
+        <h3>VIP Membership</h3>
+        <p>All Premium benefits plus personal training sessions.</p>
+        <p class="price">$80/month</p>
+        <button class="btn membership-btn">Join Now</button>
+      </div>
+    </section>
+
+    <!-- JavaScript to handle redirection on button click -->
+    <script>
+      const joinButtons = document.querySelectorAll('.membership-btn');
+      joinButtons.forEach((button, index) => {
+        button.addEventListener('click', () => {
+          if (index === 0) {
+            window.location.href = 'basic-membership.html'; // Redirect to Basic Membership page
+          } else if (index === 1) {
+            window.location.href = 'premium-membership.html'; // Redirect to Premium Membership page
+          } else if (index === 2) {
+            window.location.href = 'vip-membership.html'; // Redirect to VIP Membership page
+          }
+        });
+      });
+    </script>
+
+    <footer>
+      <p>&copy; 2024 EmpowerFit | Follow us on
+        <a href="#">Instagram</a> |
+        <a href="#">Facebook</a> |
+        <a href="#">Twitter</a>
+      </p>
+    </footer>
+  </body>
+</html>
