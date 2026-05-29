@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - EmpowerFit</title>
+  <link rel="icon" type="image/x-icon" href="logo3.avif">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- CDN Dependencies: FontAwesome (icons) and Chart.js (analytics) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="animated-fade" style="overflow-y: hidden;">
+  
+  <header>
+    <a href="index.html" class="left">
+      <img src="logo3.avif" alt="Gym Logo" />
+      <div>EmpowerFit</div>
+    </a>
+    <ul class="navbar">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="memberships.html">Memberships</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+    
+    <div class="nav-user-controls" style="display: flex; align-items: center; gap: 15px;">
+      <span id="userGreeting" style="font-weight: 600; color: var(--accent-primary);">alex@empowerfit.com</span>
+      <button class="btn btn-secondary" id="headerLogoutBtn">Log Out</button>
+    </div>
+  </header>
+
+  <div class="dashboard-wrapper">
+    
+    <!-- Sidebar Controls Panel -->
+    <aside class="sidebar">
+      <button class="sidebar-btn active" data-tab="overview">
+        <i class="fa-solid fa-chart-line"></i> Dashboard
+      </button>
+      <button class="sidebar-btn" data-tab="workouts">
+        <i class="fa-solid fa-dumbbell"></i> Custom Workouts
+      </button>
+      <button class="sidebar-btn" data-tab="bookings">
+        <i class="fa-solid fa-calendar-check"></i> Book Trainer
+      </button>
+      <button class="sidebar-btn" data-tab="profile">
+        <i class="fa-solid fa-user-gear"></i> Edit Profile
+      </button>
+    </aside>
+
+    <!-- Main Content Panel -->
+    <main class="dashboard-content">
+      
+      <!-- 1. OVERVIEW / TRACKING DASHBOARD PANEL -->
+      <section id="overview-tab" class="tab-panel active">
+        <div class="dashboard-header">
+          <div>
+            <h1 id="welcomeHeader">Welcome Back, Alex!</h1>
+            <p>Here is your daily activity log and weekly analytics summary.</p>
+          </div>
+          <div style="background: rgba(46, 196, 182, 0.08); border: 1px solid var(--accent-secondary); padding: 8px 16px; border-radius: 8px; text-align: right;">
+            <div style="font-size: 11px; color: var(--text-muted); font-weight: 700; letter-spacing: 0.5px;">ACTIVE SUBSCRIPTION</div>
+            <div id="subLabel" style="font-weight: 700; color: var(--accent-secondary); font-size: 16px;">Premium Plan</div>
+          </div>
+        </div>
+
+        <!-- Metrics cards row -->
+        <div class="metrics-grid">
+          
+          <!-- Calories Burned Today -->
+          <div class="metric-card calories">
+            <span class="label"><i class="fa-solid fa-fire"></i> Calories Today</span>
+            <span class="value" id="calTodayVal">0 <span style="font-size: 14px; font-weight: 400; color: var(--text-muted);">kcal</span></span>
+            
+            <!-- Quick Log Workout Modal Inline -->
+            <button class="btn btn-secondary btn-sm" id="showLogFormBtn" style="padding: 4px 10px; font-size: 12px; border-radius: 4px; margin-top: 5px;">Log Activity</button>
+            <div id="logWorkoutMiniForm" style="display: none; margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 10px; gap: 8px; flex-direction: column;">
+              <div style="display: flex; gap: 5px;">
+                <input type="number" id="inputCalories" placeholder="Kcal" style="padding: 6px; font-size: 12px; border-radius: 4px; background: rgba(0,0,0,0.3);" required />
+                <input type="number" id="inputMinutes" placeholder="Mins" style="padding: 6px; font-size: 12px; border-radius: 4px; background: rgba(0,0,0,0.3);" required />
+              </div>
+              <button class="btn btn-teal btn-sm" id="submitWorkoutLogBtn" style="padding: 4px 10px; font-size: 12px; border-radius: 4px; width: 100%;">Record</button>
+            </div>
+          </div>
+
+          <!-- Active Minutes Today -->
+          <div class="metric-card minutes">
+            <span class="label"><i class="fa-solid fa-clock"></i> Active Time</span>
+            <span class="value" id="minTodayVal">0 <span style="font-size: 14px; font-weight: 400; color: var(--text-muted);">mins</span></span>
+            <p style="font-size: 12px; color: var(--text-muted); margin-top: 10px;">Goal: 45 active minutes daily</p>
+          </div>
+
+          <!-- Hydration level today -->
+          <div class="metric-card water">
+            <span class="label"><i class="fa-solid fa-droplet"></i> Water Consumed</span>
+            <span class="value" id="waterTodayVal">0 <span style="font-size: 14px; font-weight: 400; color: var(--text-muted);">ml</span></span>
+            <div class="metric-action">
+              <button class="btn btn-secondary btn-sm" id="logWater250Btn" style="padding: 4px 10px; font-size: 12px; border-radius: 4px; width: 100%;">+250ml</button>
+              <button class="btn btn-secondary btn-sm" id="logWater500Btn" style="padding: 4px 10px; font-size: 12px; border-radius: 4px; width: 100%;">+500ml</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Weekly Performance Chart Grid -->
+        <div class="analytics-grid">
+          
+          <!-- Chart card -->
+          <div class="glass-card">
+            <h3 style="margin-bottom: 20px; font-size: 20px; font-weight: 700; color: var(--text-main);">Weekly Progress Analytics</h3>
+            <div class="chart-container">
+              <canvas id="workoutChart"></canvas>
+            </div>
+          </div>
+
+          <!-- Subscription expiry card -->
+          <div class="glass-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <h3 style="margin-bottom: 15px; font-size: 20px; font-weight: 700; color: var(--accent-primary);">Membership Detail</h3>
+              <p style="font-size: 15px; margin-bottom: 10px;"><strong style="color:#fff;">Plan Status:</strong> Active</p>
+              <p style="font-size: 15px; margin-bottom: 10px;"><strong style="color:#fff;">Start Date:</strong> <span id="subStartStr">-</span></p>
+              <p style="font-size: 15px; margin-bottom: 10px;"><strong style="color:#fff;">Renewal Date:</strong> <span id="subEndStr">-</span></p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 15px; border-radius: 8px; text-align: center; margin-top: 20px;">
+              <span style="font-size: 12px; color: var(--text-muted); display: block;">PLAN PERKS:</span>
+              <span id="subPerksDesc" style="font-weight: 600; font-size: 14px; color: var(--accent-secondary);">Access to Digital Analytics & Core Gym Equipments</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. WORKOUT PLAN GENERATOR PANEL -->
+      <section id="workouts-tab" class="tab-panel">
+        <div class="dashboard-header">
+          <div>
+            <h1>Personalized Workout Planner</h1>
+            <p>Generate high-quality workout guides dynamically designed around your metrics.</p>
+          </div>
+        </div>
+
+        <div class="generator-layout">
+          <!-- Setup panel -->
+          <div class="glass-card">
+            <h3 style="margin-bottom: 20px; font-weight: 700; color: var(--accent-primary);">Routine Criteria</h3>
+            <form id="workoutGeneratorForm">
+              
+              <div class="form-group">
+                <label for="workoutGoal">Exercise Target</label>
+                <select id="workoutGoal" required>
+                  <option value="cardio">Cardio & Endurance</option>
+                  <option value="strength">Strength & Hypertrophy</option>
+                  <option value="yoga">Flexibility & Core (Yoga)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="workoutDifficulty">Difficulty Level</label>
+                <select id="workoutDifficulty" required>
+                  <option value="beginner">Beginner (Introductory)</option>
+                  <option value="intermediate">Intermediate (Standard)</option>
+                  <option value="advanced">Advanced (High Intensity)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="workoutDuration">Total Duration</label>
+                <select id="workoutDuration" required>
+                  <option value="15">15 Minutes (Express)</option>
+                  <option value="30" selected>30 Minutes (Recommended)</option>
+                  <option value="45">45 Minutes (Intense)</option>
+                  <option value="60">60 Minutes (Elite)</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn btn-teal" style="width: 100%; margin-top: 10px;">Generate Routine</button>
+            </form>
+          </div>
+
+          <!-- Routine Result panel -->
+          <div class="glass-card" id="routineResultContainer">
+            
+            <!-- Default Empty State -->
+            <div class="routine-results" id="emptyRoutineState">
+              <i class="fa-solid fa-wand-magic-sparkles" style="font-size: 50px; color: var(--accent-secondary); margin-bottom: 15px; opacity: 0.7;"></i>
+              <h3>Customize Your Routine</h3>
+              <p style="color: var(--text-muted); max-width: 400px; margin-top: 10px;">Select your goals and trigger the workout algorithm to establish a bespoke routine schedule.</p>
+            </div>
+
+            <!-- Dynamic Routine State -->
+            <div class="routine-flow" id="activeRoutineState" style="display: none;">
+              <div class="routine-header">
+                <div>
+                  <h3 id="routineGoalTitle" style="font-size: 22px; font-weight: 700; color: var(--accent-primary);">Strength Routine</h3>
+                  <span id="routineDiffLevel" style="font-size: 12px; font-weight: 700; background: rgba(46, 196, 182, 0.1); color: var(--accent-secondary); padding: 4px 10px; border-radius: 12px;">INTERMEDIATE</span>
+                </div>
+                <div style="text-align: right;">
+                  <span id="routineTime" style="font-size: 15px; font-weight: 600; display: block;"><i class="fa-solid fa-clock"></i> 30 Mins</span>
+                  <span id="routineCals" style="font-size: 13px; color: var(--accent-danger); font-weight: 600;"><i class="fa-solid fa-fire"></i> ~240 Kcal</span>
+                </div>
+              </div>
+              
+              <!-- Core exercises list -->
+              <div id="exercisesContainer">
+                <!-- Dynamically generated exercises inside js -->
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. TRAINER BOOKINGS PANEL -->
+      <section id="bookings-tab" class="tab-panel">
+        <div class="dashboard-header">
+          <div>
+            <h1>Personal Trainer Scheduling</h1>
+            <p>Book private 1-on-1 sessions with our certified fitness experts.</p>
+          </div>
+        </div>
+
+        <div class="booking-grid">
+          
+          <!-- Appointment form panel -->
+          <div class="glass-card">
+            <h3 style="margin-bottom: 20px; font-weight: 700; color: var(--accent-primary);">Schedule Appointment</h3>
+            <form id="appointmentForm">
+              
+              <div class="form-group">
+                <label>Select Fitness Coach</label>
+                <div class="trainers-list">
+                  
+                  <div class="trainer-card selected" data-trainer="John Doe" data-specialty="Strength Coach">
+                    <img src="team_member1.jpg" alt="John Doe" />
+                    <h4>John Doe</h4>
+                    <p>Strength Coach</p>
+                  </div>
+
+                  <div class="trainer-card" data-trainer="Jane Smith" data-specialty="Nutritionist">
+                    <img src="team_member2.jpg" alt="Jane Smith" />
+                    <h4>Jane Smith</h4>
+                    <p>Nutritionist</p>
+                  </div>
+
+                  <div class="trainer-card" data-trainer="Mike Johnson" data-specialty="Yoga Specialist">
+                    <img src="team_member3.jpg" alt="Mike Johnson" />
+                    <h4>Mike Johnson</h4>
+                    <p>Yoga Specialist</p>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="bookingDate">Appointment Date</label>
+                <input type="date" id="bookingDate" required />
+              </div>
+
+              <div class="form-group">
+                <label for="bookingTime">Time Slot</label>
+                <select id="bookingTime" required>
+                  <option value="09:00 AM">09:00 AM - 10:00 AM</option>
+                  <option value="10:30 AM">10:30 AM - 11:30 AM</option>
+                  <option value="01:00 PM">01:00 PM - 02:00 PM</option>
+                  <option value="03:00 PM">03:00 PM - 04:00 PM</option>
+                  <option value="04:30 PM">04:30 PM - 05:30 PM</option>
+                  <option value="06:00 PM">06:00 PM - 07:00 PM</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn" style="width: 100%; margin-top: 10px;">Schedule 1-on-1 Session</button>
+            </form>
+          </div>
+
+          <!-- Appointment list panel -->
+          <div class="glass-card">
+            <h3 style="margin-bottom: 20px; font-weight: 700; color: var(--accent-secondary);">Your Confirmed Sessions</h3>
+            
+            <div class="sessions-list" id="activeSessionsList">
+              <!-- Dynamically mapped bookings -->
+            </div>
+
+            <!-- Empty slots state -->
+            <div id="emptySessionsState" style="display: none; text-align: center; padding: 50px 20px;">
+              <i class="fa-solid fa-calendar-xmark" style="font-size: 40px; color: var(--text-muted); opacity: 0.5; margin-bottom: 12px;"></i>
+              <p style="color: var(--text-muted);">No upcoming training sessions scheduled.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. PROFILE / STATS EDIT PANEL -->
+      <section id="profile-tab" class="tab-panel">
+        <div class="dashboard-header">
+          <div>
+            <h1>Edit Physical Profile</h1>
+            <p>Update your biological metrics to refine tracking values.</p>
+          </div>
+        </div>
+
+        <div class="glass-card" style="max-width: 500px; margin: 0 auto;">
+          <h3 style="margin-bottom: 25px; font-weight: 700; color: var(--accent-primary); text-align: center;">Biological Metrics</h3>
+          <form id="profileForm">
+            
+            <div class="form-group">
+              <label for="profileName">Full Name</label>
+              <input type="text" id="profileName" required />
+            </div>
+
+            <div class="form-group">
+              <label for="profileHeight">Height (cm)</label>
+              <input type="number" step="0.1" id="profileHeight" placeholder="Height in cm" required />
+            </div>
+
+            <div class="form-group">
+              <label for="profileWeight">Weight (kg)</label>
+              <input type="number" step="0.1" id="profileWeight" placeholder="Weight in kg" required />
+            </div>
+
+            <div class="form-group">
+              <label for="profileGoal">Primary Wellness Target</label>
+              <select id="profileGoal" required>
+                <option value="General Fitness">General Fitness & Health</option>
+                <option value="Build Muscle">Muscle Hypertrophy (Build Muscle)</option>
+                <option value="Fat Loss">Body Fat Reduction (Weight Loss)</option>
+                <option value="Flexibility">Mobility & Relaxation (Yoga)</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-teal" style="width: 100%; margin-top: 15px;">Update Profile Stats</button>
+          </form>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- Shared main.js script + dashboard.js backend wiring -->
+  <script src="js/main.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

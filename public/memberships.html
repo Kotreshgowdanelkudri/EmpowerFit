@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EmpowerFit - Choose Your Plan</title>
+    <link rel="icon" type="image/x-icon" href="logo3.avif" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body class="animated-fade">
+    <header>
+      <a href="index.html" class="left">
+        <img src="logo3.avif" alt="Gym Logo" />
+        <div>EmpowerFit</div>
+      </a>
+      <ul class="navbar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="memberships.html" class="active">Memberships</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+      <a href="join.html"><button class="btn">Join Us</button></a>
+    </header>
+
+    <section class="hero">
+      <h1>Our Membership <span>Plans</span></h1>
+      <p>Choose the plan that suits you best! Every membership grants access to our premium digital tracking dashboard.</p>
+    </section>
+
+    <!-- Membership Plans Section -->
+    <section class="plans">
+      <div class="plan">
+        <h3>Basic Membership</h3>
+        <p style="color: var(--text-muted);">Access to gym facilities during off-peak hours.</p>
+        <div class="price">$30<span>/month</span></div>
+        <ul>
+          <li>Access to gym equipment</li>
+          <li>Locker & shower facilities</li>
+          <li>Digital workout tracker logs</li>
+        </ul>
+        <button class="btn btn-secondary membership-btn" data-plan="basic">Join Now</button>
+      </div>
+
+      <div class="plan featured">
+        <h3>Premium Membership</h3>
+        <p style="color: var(--text-muted);">Unlimited access to gym facilities and daily fitness classes.</p>
+        <div class="price">$50<span>/month</span></div>
+        <ul>
+          <li>24/7 unlimited gym access</li>
+          <li>All group fitness classes</li>
+          <li>Digital tracker & chart analytics</li>
+          <li>1 Booked Trainer slot per month</li>
+        </ul>
+        <button class="btn membership-btn" data-plan="premium">Join Now</button>
+      </div>
+
+      <div class="plan">
+        <h3>VIP Membership</h3>
+        <p style="color: var(--text-muted);">All Premium benefits plus unlimited personal training guidance.</p>
+        <div class="price">$80<span>/month</span></div>
+        <ul>
+          <li>All Premium membership benefits</li>
+          <li>Unlimited trainer bookings</li>
+          <li>Custom workout routines generator</li>
+          <li>Custom nutritionist consultation</li>
+        </ul>
+        <button class="btn btn-teal membership-btn" data-plan="vip">Join Now</button>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2026 EmpowerFit | Follow us on
+        <a href="#">Instagram</a> |
+        <a href="#">Facebook</a> |
+        <a href="#">Twitter</a>
+      </p>
+    </footer>
+
+    <!-- Shared frontend utilities script -->
+    <script src="js/main.js"></script>
+    <script>
+      // Setup dynamic plan redirects
+      document.querySelectorAll('.membership-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const plan = this.getAttribute('data-plan');
+          window.location.href = `signup.html?plan=${plan}`;
+        });
+      });
+    </script>
+  </body>
+</html>

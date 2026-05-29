@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EmpowerFit - Elevate Your Fitness Journey</title>
+    <link rel="icon" type="image/x-icon" href="logo3.avif" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body class="animated-fade">
+    <header>
+      <a href="index.html" class="left">
+        <img src="logo3.avif" alt="Gym Logo" />
+        <div>EmpowerFit</div>
+      </a>
+      <ul class="navbar">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="memberships.html">Memberships</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+      <a href="join.html"><button class="btn">Join Us</button></a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Welcome to <span>EmpowerFit</span></h1>
+      <p>Your premium, fully-guided fitness journey starts today. Access state-of-the-art facilities, expert dietitians, and tailored trainers.</p>
+      <button class="btn" id="getStartedBtn">Get Started</button>
+    </section>
+
+    <!-- Gym Services Section (Cards) -->
+    <section class="cards" id="scrollTarget">
+      <div class="card">
+        <img src="cardio.jpeg" alt="Cardio Training" />
+        <h3>Cardio Training</h3>
+        <p>Boost your endurance and heart health with our cardio programs.</p>
+      </div>
+
+      <div class="card">
+        <img src="strength training.jpeg" alt="Strength Training" />
+        <h3>Strength Training</h3>
+        <p>Build muscle and strength with our expert-led strength training sessions.</p>
+      </div>
+
+      <div class="card">
+        <img src="yoga.jpeg" alt="Yoga Training" />
+        <h3>Yoga Training</h3>
+        <p>Improve your flexibility and balance with our yoga classes.</p>
+      </div>
+
+      <div class="card">
+        <img src="personal_training.jpg" alt="Personal Training" />
+        <h3>Personal Training</h3>
+        <p>Customized workout plans to meet your specific fitness goals.</p>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+      <h2>What Our Members Say</h2>
+      <blockquote>
+        "EmpowerFit gave me the confidence and strength I needed. The trainers are exceptional, and the dashboard tracking is an absolute game-changer!" – Alex C.
+      </blockquote>
+    </section>
+
+    <!-- Special Offer Section -->
+    <section class="promo">
+      <h2>Special Opening Offer</h2>
+      <p>Join now and receive 20% off your first month! <a href="memberships.html">Learn More</a></p>
+      <a href="memberships.html"><button class="btn btn-teal">Select Your Plan</button></a>
+    </section>
+
+    <footer>
+      <p>&copy; 2026 EmpowerFit | Follow us on
+        <a href="#">Instagram</a> |
+        <a href="#">Facebook</a> |
+        <a href="#">Twitter</a>
+      </p>
+    </footer>
+
+    <!-- Frontend Utilities Scripts -->
+    <script src="js/main.js"></script>
+    <script>
+      // CTA scroll/redirect handler
+      document.getElementById('getStartedBtn').addEventListener('click', () => {
+        window.location.href = 'join.html';
+      });
+    </script>
+  </body>
+</html>

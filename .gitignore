@@ -1,0 +1,29 @@
+# Node dependencies
+node_modules/
+
+# Lockfiles (optional, but typical for serverless/hosting clean installs)
+# package-lock.json (we can commit this, but let's exclude it if it causes conflicts, or better to ignore it or keep it depending on standard. In many standard setups we commit package-lock, but let's commit it and only ignore databases, secrets, and nodes!)
+
+# Environment variables & local secrets
+.env
+.env.local
+.env.test
+
+# SQLite databases & journals
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# Logs and diagnostics
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+*.log
+
+# System cache and editor folders
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

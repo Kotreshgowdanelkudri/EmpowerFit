@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - EmpowerFit</title>
+    <link rel="icon" type="image/x-icon" href="logo3.avif" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body class="animated-fade">
+    <header>
+      <a href="index.html" class="left">
+        <img src="logo3.avif" alt="Gym Logo" />
+        <div>EmpowerFit</div>
+      </a>
+      <ul class="navbar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="memberships.html">Memberships</a></li>
+        <li><a href="contact.html" class="active">Contact Us</a></li>
+      </ul>
+      <a href="join.html"><button class="btn">Join Us</button></a>
+    </header>
+
+    <section class="hero">
+      <h1>Contact <span>Us</span></h1>
+      <p>We're here to help you with any questions or concerns. Shoot us a message!</p>
+    </section>
+
+    <div style="max-width: 1000px; margin: 0 auto; padding: 60px 20px; display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px;">
+      
+      <!-- Info Panel -->
+      <section class="glass-card" style="display: flex; flex-direction: column; justify-content: center; text-align: left; height: 100%;">
+        <h2 style="color: var(--accent-primary); margin-bottom: 20px; font-weight: 700; font-size: 24px;">Our Contact Info</h2>
+        <div style="display: flex; flex-direction: column; gap: 15px;">
+          <p style="font-size: 16px; margin: 0;"><strong style="color: #fff;">Email:</strong><br><span style="color: var(--text-muted);">support@empowerfit.com</span></p>
+          <p style="font-size: 16px; margin: 0;"><strong style="color: #fff;">Phone:</strong><br><span style="color: var(--text-muted);">+1 (234) 567-8900</span></p>
+          <p style="font-size: 16px; margin: 0;"><strong style="color: #fff;">Address:</strong><br><span style="color: var(--text-muted);">123 Fitness Street, Silicon Valley, CA</span></p>
+        </div>
+      </section>
+
+      <!-- Message Form Panel -->
+      <section class="glass-card contact-form">
+        <h2 style="color: var(--accent-secondary); margin-bottom: 25px; font-weight: 700; font-size: 24px; text-align: center;">Send Us a Message</h2>
+        <form>
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="Enter your name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="Enter your email" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" rows="5" placeholder="How can we help you?" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-teal">Submit Message</button>
+        </form>
+      </section>
+
+    </div>
+
+    <footer>
+      <p>&copy; 2026 EmpowerFit | Follow us on
+        <a href="#">Instagram</a> |
+        <a href="#">Facebook</a> |
+        <a href="#">Twitter</a>
+      </p>
+    </footer>
+
+    <!-- Shared and Form-specific Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/forms.js"></script>
+  </body>
+</html>
